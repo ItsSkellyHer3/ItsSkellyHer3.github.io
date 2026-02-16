@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ItsSkellyHer3 | Architect & Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#000000',
+                        surface: '#0a0a0a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .selection-white::selection { background: white; color: black; }
+        @media (max-height: 700px) {
+            .hero-title { font-size: 3.5rem !important; line-height: 1 !important; }
+            .section-padding { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+        }
+    </style>
+</head>
+<body class="bg-dark text-white selection-white overflow-x-hidden">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 bg-dark/80 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
+            <span class="font-black text-xl tracking-tighter">SK.</span>
+            <div class="flex gap-8 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+                <a href="https://github.com/ItsSkellyHer3" target="_blank" class="hover:text-white transition-colors">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="min-h-screen flex flex-col justify-center px-6 section-padding relative">
+        <div class="max-w-6xl mx-auto w-full relative z-10">
+            <div class="space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white text-[10px] font-bold uppercase tracking-[0.2em]">
+                    Lead Architect & Developer
+                </div>
+                <h1 class="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-none hero-title">
+                    ItsSkelly<br/><span class="text-zinc-600">Her3.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-zinc-500 max-w-xl leading-relaxed">
+                    Architecting secure, minimalist, and ephemeral digital spaces. Focused on clean system design and real-time open source solutions.
+                </p>
+                <div class="pt-8 flex gap-4">
+                    <a href="#projects" class="bg-white text-black px-8 py-4 rounded-xl font-bold text-sm hover:bg-zinc-200 transition-all">Selected Works</a>
+                    <a href="https://github.com/ItsSkellyHer3" target="_blank" class="px-8 py-4 border border-white/10 rounded-xl font-bold text-sm hover:bg-white/5 transition-all">GitHub Profile</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Subtle Background Accent -->
+        <div class="absolute bottom-0 right-0 w-full h-1/2 bg-[radial-gradient(circle_at_80%_80%,_rgba(255,255,255,0.03)_0%,_transparent_50%)]"></div>
+    </section>
+
+    <!-- SELECTED WORKS -->
+    <section id="projects" class="py-24 md:py-32 px-6 bg-surface">
+        <div class="max-w-6xl mx-auto space-y-16">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-6">
+                <h2 class="text-4xl font-black tracking-tight uppercase">Selected Works</h2>
+                <span class="text-[10px] font-bold text-zinc-600 uppercase tracking-widest mb-2">01 / 01</span>
+            </div>
+
+            <div class="grid gap-12">
+                <!-- PROJECT: CHATIFY -->
+                <div class="group relative bg-dark border border-white/5 rounded-[2.5rem] p-8 md:p-12 overflow-hidden hover:border-white/20 transition-all shadow-2xl">
+                    <div class="relative z-10 flex flex-col md:flex-row gap-12 items-center">
+                        <div class="flex-1 space-y-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
+                                    <i data-lucide="message-square" class="w-5 h-5 text-black"></i>
+                                </div>
+                                <h3 class="text-3xl font-bold">Chatify</h3>
+                            </div>
+                            <p class="text-zinc-500 leading-relaxed">
+                                A high-performance, monochrome messaging interface designed for ephemeral communication. Distributed under MIT license, featuring real-time synchronization and zero-persistence data architecture.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-bold uppercase tracking-wider text-zinc-400">Node.js</span>
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-bold uppercase tracking-wider text-zinc-400">FastAPI</span>
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-bold uppercase tracking-wider text-zinc-400">Socket.io</span>
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-bold uppercase tracking-wider text-zinc-400">Tailwind CSS</span>
+                            </div>
+                            <div class="pt-4">
+                                <a href="https://github.com/ItsSkellyHer3/ChatIfy" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white hover:underline underline-offset-8">
+                                    View Repository <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 aspect-video bg-zinc-900 rounded-2xl border border-white/5 flex items-center justify-center relative overflow-hidden group-hover:scale-[1.02] transition-transform">
+                            <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.05)_0%,_transparent_100%)]"></div>
+                            <span class="text-xs font-black text-white/20 uppercase tracking-[1em]">UI Preview</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 md:py-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <img src="https://avatars.githubusercontent.com/ItsSkellyHer3" class="w-full max-w-sm rounded-[3rem] grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl border border-white/10" alt="ItsSkellyHer3">
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-white rounded-[2rem] flex flex-col items-center justify-center text-black p-4 rotate-6 shadow-2xl">
+                        <span class="text-[10px] font-black uppercase leading-none">Architect</span>
+                        <span class="text-2xl font-black">2026</span>
+                    </div>
+                </div>
+                <div class="space-y-8">
+                    <h2 class="text-4xl font-black tracking-tight uppercase">About the Architect</h2>
+                    <p class="text-zinc-500 leading-relaxed text-lg">
+                        ItsSkellyHer3 is a developer focused on architecting secure, minimalist, and ephemeral digital spaces. With a background in modular system design and real-time synchronization, Skelly specializes in open-source projects that prioritize user privacy and technical transparency.
+                    </p>
+                    <div class="grid grid-cols-2 gap-8 pt-4">
+                        <div class="space-y-2">
+                            <span class="block text-[10px] font-bold text-zinc-600 uppercase tracking-widest">Philosophy</span>
+                            <p class="text-sm font-bold text-white">Data Volatility & Minimalism</p>
+                        </div>
+                        <div class="space-y-2">
+                            <span class="block text-[10px] font-bold text-zinc-600 uppercase tracking-widest">Focus</span>
+                            <p class="text-sm font-bold text-white">Real-time Systems</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 border-t border-white/5 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-4">
+                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center text-black">
+                    <i data-lucide="code" class="w-4 h-4"></i>
+                </div>
+                <span class="text-xs font-bold tracking-widest text-zinc-500 uppercase">Built by ItsSkellyHer3</span>
+            </div>
+            <div class="flex gap-8 text-[10px] font-bold uppercase tracking-widest text-zinc-600">
+                <a href="https://github.com/ItsSkellyHer3" target="_blank" class="hover:text-white transition-colors">GitHub</a>
+                <a href="mailto:contact@itsskellyher3.dev" class="hover:text-white transition-colors">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
