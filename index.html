@@ -125,30 +125,44 @@
                 <div class="w-12 h-1 bg-white mt-4"></div>
             </div>
 
-            <div class="grid gap-16 md:gap-24">
+            <div class="grid gap-16 md:gap-32">
                 <!-- Chatify -->
-                <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-                    <div class="order-2 md:order-1 space-y-6">
-                        <div class="space-y-2">
-                            <span class="text-xs font-mono text-zinc-600">01. Open Source</span>
-                            <h3 class="text-3xl md:text-4xl font-bold tracking-tight">Chatify</h3>
+                <div class="space-y-12">
+                    <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+                        <div class="space-y-6">
+                            <div class="space-y-2">
+                                <span class="text-xs font-mono text-zinc-600">01. Open Source</span>
+                                <h3 class="text-3xl md:text-5xl font-bold tracking-tight">Chatify</h3>
+                            </div>
+                            <p class="text-zinc-400 leading-relaxed text-lg">
+                                A secure, real-time messaging app that prioritizes privacy. Messages are stored in temporary memory and automatically deleted every hour. Built for speed and clean communication.
+                            </p>
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold text-zinc-500 uppercase">Node.js</span>
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold text-zinc-500 uppercase">FastAPI</span>
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold text-zinc-500 uppercase">Socket.io</span>
+                            </div>
+                            <div class="pt-4">
+                                <a href="https://github.com/ItsSkellyHer3/ChatIfy" target="_blank" class="inline-flex items-center gap-3 bg-white text-black px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-zinc-200 transition-all">
+                                    View Source <i data-lucide="github" class="w-4 h-4"></i>
+                                </a>
+                            </div>
                         </div>
-                        <p class="text-zinc-400 leading-relaxed">
-                            A secure, real-time messaging app that doesn't save your data. Messages are kept in temporary memory and deleted every hour. It's built to be fast, simple, and completely private.
-                        </p>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[9px] font-bold text-zinc-500 uppercase">Node.js</span>
-                            <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[9px] font-bold text-zinc-500 uppercase">FastAPI</span>
-                            <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[9px] font-bold text-zinc-500 uppercase">Socket.io</span>
-                        </div>
-                        <div class="pt-4">
-                            <a href="https://github.com/ItsSkellyHer3/ChatIfy" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:underline decoration-2 underline-offset-8">
-                                Source Code <i data-lucide="github" class="w-4 h-4"></i>
-                            </a>
+                        
+                        <!-- Image 1: Main Preview -->
+                        <div class="aspect-video bg-zinc-900 rounded-2xl border border-white/5 overflow-hidden group">
+                            <img src="assets/images/chatify-home.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-105" alt="Chatify Home">
                         </div>
                     </div>
-                    <div class="order-1 md:order-2 aspect-video bg-zinc-900 rounded-2xl border border-white/5 flex items-center justify-center overflow-hidden group">
-                        <img src="assets/images/chatify-preview.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Chatify">
+
+                    <!-- Gallery Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                        <div class="aspect-[4/3] bg-zinc-900 rounded-2xl border border-white/5 overflow-hidden group">
+                            <img src="assets/images/chatify-chat.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-105" alt="Chatify Chat">
+                        </div>
+                        <div class="aspect-[4/3] bg-zinc-900 rounded-2xl border border-white/5 overflow-hidden group">
+                            <img src="assets/images/chatify-settings.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-105" alt="Chatify Settings">
+                        </div>
                     </div>
                 </div>
             </div>
