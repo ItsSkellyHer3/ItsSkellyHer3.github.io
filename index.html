@@ -7,192 +7,178 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --m3-bg: #16100e;
-            --m3-surface: #221815;
-            --m3-primary: #f59e0b;
-            --m3-on-surface: #ececec;
-            --m3-outline: #4a342d;
+            /* Material You Dark Theme Colors */
+            --bg: #16100e;
+            --surface: #221815;
+            --surface-hover: #2e221f;
+            --primary: #f59e0b; /* Amber */
+            --primary-text: #3b2300;
+            --outline: #4a342d;
         }
+
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: var(--m3-bg);
-            color: var(--m3-on-surface);
-            line-height: 1.5;
+            background-color: var(--bg);
+            color: #ececec;
+            overflow-y: auto; 
+            scrollbar-width: none; /* Hide scrollbar for clean look */
         }
-        .m3-container {
-            background-color: var(--m3-surface);
-            border: 1px solid var(--m3-outline);
-            border-radius: 28px;
+        body::-webkit-scrollbar { display: none; }
+
+        /* Dense Material Cards */
+        .card {
+            background-color: var(--surface);
+            border: 1px solid var(--outline);
+            border-radius: 24px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.2s;
         }
-        .m3-button-filled {
-            background-color: var(--m3-primary);
-            color: #000;
-            padding: 10px 24px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.875rem;
-            transition: opacity 0.2s;
-        }
-        .m3-button-tonal {
-            background-color: var(--m3-outline);
-            color: var(--m3-on-surface);
-            padding: 10px 24px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.875rem;
-        }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
+        .card:hover { background-color: var(--surface-hover); }
         
-        /* Dense UI Utilities */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .card-primary {
+            background-color: #5c3800;
+            border: 1px solid var(--primary);
+            border-radius: 24px;
+            padding: 1.25rem;
+            color: #ffdf9e;
+        }
+
+        /* Small Chips */
+        .chip {
+            background-color: var(--surface-hover);
+            border: 1px solid var(--outline);
+            color: #d1d5db;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .chip-primary {
+            background-color: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            color: #fcd34d;
+        }
     </style>
 </head>
-<body class="selection:bg-amber-500/30">
+<body class="selection:bg-amber-500/30 min-h-screen flex items-center justify-center p-4">
 
-    <!-- Header (Strictly preserved) -->
-    <nav class="fixed top-0 w-full z-50 bg-[#16100e]/80 backdrop-blur-xl border-b border-white/5">
-        <div class="max-w-5xl mx-auto px-6 h-16 flex justify-between items-center">
-            <div class="font-extrabold text-lg tracking-tight flex items-center gap-2">
-                <span class="text-amber-500">🍂</span> ItsSkellyHer3
-            </div>
-            <div class="flex gap-4">
-                <a href="https://github.com/ItsSkellyHer3" target="_blank" class="p-2 text-slate-400 hover:text-amber-500 transition-colors">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                </a>
-            </div>
-        </div>
-    </nav>
+    <!-- Main Grid Container: Fits exactly on one standard screen -->
+    <main class="max-w-[1100px] w-full grid grid-cols-1 md:grid-cols-12 gap-3 auto-rows-auto">
 
-    <main class="max-w-4xl mx-auto px-6 pt-32 pb-24">
-        
-        <!-- Dense Intro Section -->
-        <section class="mb-12">
-            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 tracking-tighter text-white">
-                Vibe coder. <span class="text-amber-500">Dense builder.</span>
-            </h1>
-            <p class="text-base text-slate-300 max-w-2xl mb-6">
-                I am ItsSkellyHer3. I build software with a focus on privacy and straightforward utility. I learn through doing, breaking, and hosting on Ngrok.
-            </p>
-            
-            <div class="flex flex-wrap items-center gap-3 mb-8">
-                <a href="mailto:adhyasthareihan@gmail.com" class="m3-button-filled">Email Me</a>
-                <div class="flex items-center gap-1.5 px-3 py-2 bg-white/5 rounded-2xl border border-white/10">
-                    <a href="https://tiktok.com/@ItsSkellyHer3" target="_blank" class="p-1 hover:text-amber-500">
-                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.32c7.87 33.32 31.27 60.33 62.11 70.96a121.03 121.03 0 0 0 58.8 0z"/></svg>
-                    </a>
-                    <div class="w-[1px] h-4 bg-white/10"></div>
-                    <a href="https://instagram.com/WhiskerMiller" target="_blank" class="p-1 hover:text-amber-500">
-                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
+        <!-- 1. Profile Box (Spans 8 columns) -->
+        <section class="card col-span-1 md:col-span-8 flex flex-col justify-center min-h-[220px]">
+            <div class="flex flex-col sm:flex-row gap-5 items-start sm:items-center">
+                <!-- Pulls your actual GitHub Profile Picture -->
+                <img src="https://github.com/ItsSkellyHer3.png" alt="Profile Picture" class="w-24 h-24 rounded-full border-2 border-amber-500 shadow-lg object-cover">
+                
+                <div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-amber-500 text-xl">🍂</span>
+                        <h1 class="text-3xl font-extrabold tracking-tight text-white">ItsSkellyHer3</h1>
+                    </div>
+                    <p class="text-sm text-amber-500 font-bold mb-2 uppercase tracking-wide">Vibe Coder • Builder</p>
+                    <p class="text-sm text-slate-300 max-w-lg leading-relaxed">
+                        I build simple software that keeps your privacy safe. I do not use complicated setups. I learn by building things, breaking them, and fixing them.
+                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- Tabs Navigation -->
-        <div class="flex items-center gap-1 mb-8 bg-white/5 p-1 w-fit rounded-[24px]">
-            <button onclick="switchTab('projects')" id="tab-projects" class="tab-link active px-6 py-2 rounded-[20px] text-sm font-bold bg-amber-600 text-black">Work</button>
-            <button onclick="switchTab('stack')" id="tab-stack" class="tab-link px-6 py-2 rounded-[20px] text-sm font-bold text-slate-400">Stack</button>
-        </div>
-
-        <!-- Projects Grid -->
-        <div id="projects" class="tab-content active">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="m3-container p-6 flex flex-col justify-between hover:bg-[#2a1d1a] transition-colors">
-                    <div>
-                        <div class="text-amber-500 mb-4">
-                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">ChatIfy</h3>
-                        <p class="text-sm text-slate-400 mb-6">Privacy-first and open source Chat application. Built with security as the primary architectural constraint.</p>
-                    </div>
-                    <div class="flex gap-2 items-center">
-                        <span class="text-[10px] font-bold text-slate-500 border border-white/10 px-2 py-0.5 rounded">TYPESCRIPT</span>
-                        <span class="text-[10px] font-bold text-slate-500 border border-white/10 px-2 py-0.5 rounded">SQL</span>
-                    </div>
-                </div>
-
-                <div class="m3-container p-6 flex flex-col justify-between opacity-60">
-                    <div>
-                        <div class="text-slate-500 mb-4">
-                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2 text-slate-300">EduClass</h3>
-                        <p class="text-sm text-slate-500 mb-6">Class management system designed for educators. Project is currently discontinued but serves as a logic foundation.</p>
-                    </div>
-                    <div class="flex gap-2 items-center">
-                        <span class="text-[10px] font-bold text-slate-600 border border-white/10 px-2 py-0.5 rounded">DISCONTINUED</span>
-                    </div>
-                </div>
+        <!-- 2. Web Skills Box (Spans 4 columns) -->
+        <section class="card col-span-1 md:col-span-4">
+            <h2 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">What I Build With</h2>
+            <div class="flex flex-wrap gap-2 mt-auto">
+                <span class="chip chip-primary">React</span>
+                <span class="chip chip-primary">Tailwind CSS</span>
+                <span class="chip">Node.js</span>
+                <span class="chip">TypeScript</span>
             </div>
-        </div>
+            <p class="text-xs text-slate-400 mt-4 leading-tight">I focus on making websites look good and run fast using these tools.</p>
+        </section>
 
-        <!-- Stack Section -->
-        <div id="stack" class="tab-content">
-            <div class="m3-container p-6">
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                    <div class="p-4 bg-[#1c1412] rounded-2xl border border-white/5 flex flex-col items-center gap-2">
-                        <span class="text-xs font-bold text-amber-500 tracking-widest uppercase">SQL</span>
-                    </div>
-                    <div class="p-4 bg-[#1c1412] rounded-2xl border border-white/5 flex flex-col items-center gap-2">
-                        <span class="text-xs font-bold text-amber-500 tracking-widest uppercase">MongoDB</span>
-                    </div>
-                    <div class="p-4 bg-[#1c1412] rounded-2xl border border-white/5 flex flex-col items-center gap-2">
-                        <span class="text-xs font-bold text-amber-500 tracking-widest uppercase">React</span>
-                    </div>
-                    <div class="p-4 bg-[#1c1412] rounded-2xl border border-white/5 flex flex-col items-center gap-2">
-                        <span class="text-xs font-bold text-amber-500 tracking-widest uppercase">Tailwind</span>
-                    </div>
-                    <div class="p-4 bg-[#1c1412] rounded-2xl border border-white/5 flex flex-col items-center gap-2">
-                        <span class="text-xs font-bold text-amber-500 tracking-widest uppercase">Node.js</span>
-                    </div>
-                    <div class="p-4 bg-[#1c1412] rounded-2xl border border-white/5 flex flex-col items-center gap-2">
-                        <span class="text-xs font-bold text-amber-500 tracking-widest uppercase">Ngrok</span>
-                    </div>
-                    <div class="p-4 bg-[#1c1412] rounded-2xl border border-white/5 flex flex-col items-center gap-2">
-                        <span class="text-xs font-bold text-amber-500 tracking-widest uppercase">Git</span>
-                    </div>
-                    <div class="p-4 bg-[#1c1412] rounded-2xl border border-white/5 flex flex-col items-center gap-2">
-                        <span class="text-xs font-bold text-amber-500 tracking-widest uppercase">Linux</span>
-                    </div>
+        <!-- 3. Project 1: ChatIfy (Spans 5 columns) -->
+        <section class="card-primary col-span-1 md:col-span-5 flex flex-col justify-between min-h-[160px]">
+            <div>
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-xl font-extrabold text-amber-500">ChatIfy</h3>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                 </div>
+                <p class="text-sm opacity-90 leading-snug">A private, open-source chat app. Built to keep your messages completely safe and hidden.</p>
             </div>
-        </div>
+            <div class="flex gap-2 mt-4">
+                <span class="text-[10px] font-bold border border-amber-500/50 px-2 py-1 rounded-md uppercase">TypeScript</span>
+                <span class="text-[10px] font-bold border border-amber-500/50 px-2 py-1 rounded-md uppercase">SQL</span>
+            </div>
+        </section>
 
-        <!-- Infrastructure Footer Card -->
-        <div class="mt-8 m3-container p-6 border-dashed border-white/10 bg-transparent">
-            <h4 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Infrastructure</h4>
-            <div class="flex items-center gap-4 text-sm text-slate-400">
-                <div class="flex items-center gap-2">
-                    <div class="w-1.5 h-1.5 rounded-full bg-amber-500"></div>
-                    Hosted on Ngrok
+        <!-- 4. Project 2: EduClass (Spans 4 columns) -->
+        <section class="card col-span-1 md:col-span-4 flex flex-col justify-between min-h-[160px] opacity-80 hover:opacity-100">
+            <div>
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-xl font-bold text-slate-200">EduClass</h3>
+                    <svg width="20" height="20" text-slate-500 fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
                 </div>
-                <div class="flex items-center gap-2">
-                    <div class="w-1.5 h-1.5 rounded-full bg-amber-500"></div>
-                    Data via SQL / Mongo
-                </div>
+                <p class="text-sm text-slate-400 leading-snug">An app made for teachers to manage classes easily. I stopped working on it, but it gave me great experience.</p>
             </div>
-        </div>
+            <div class="mt-4">
+                <span class="text-[10px] font-bold text-slate-400 bg-white/5 px-2 py-1 rounded-md uppercase">Stopped</span>
+            </div>
+        </section>
+
+        <!-- 5. How I Host Box (Spans 3 columns) -->
+        <section class="card col-span-1 md:col-span-3 flex flex-col justify-center">
+            <h2 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">How I Host</h2>
+            <div class="flex items-center gap-3 bg-white/5 p-2 rounded-xl mb-2">
+                <div class="w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]"></div>
+                <span class="text-sm font-bold text-slate-300">Ngrok</span>
+            </div>
+            <p class="text-xs text-slate-400">I run my servers from home and share them using Ngrok.</p>
+        </section>
+
+        <!-- 6. Database Box (Spans 3 columns) -->
+        <section class="card col-span-1 md:col-span-3">
+            <h2 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Where I Save Data</h2>
+            <div class="flex gap-2 mb-2">
+                <span class="chip">SQL</span>
+                <span class="chip">MongoDB</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-auto">I use both table-based and document-based databases.</p>
+        </section>
+
+        <!-- 7. System Tools Box (Spans 3 columns) -->
+        <section class="card col-span-1 md:col-span-3">
+            <h2 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">My System</h2>
+            <div class="flex gap-2 mb-2">
+                <span class="chip">Linux</span>
+                <span class="chip">Git</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-auto">I use Linux to run things and Git to save my code changes.</p>
+        </section>
+
+        <!-- 8. Links & Contact (Spans 6 columns) -->
+        <section class="card col-span-1 md:col-span-6 flex flex-row items-center justify-between">
+            <div class="flex flex-col">
+                <h2 class="text-lg font-bold text-white mb-1">Let's talk</h2>
+                <p class="text-xs text-slate-400">Check out my code or send me an email.</p>
+            </div>
+            
+            <div class="flex gap-2">
+                <a href="https://github.com/ItsSkellyHer3" target="_blank" class="p-3 bg-white/5 hover:bg-amber-500 hover:text-black rounded-xl transition-colors text-slate-300">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="mailto:adhyasthareihan@gmail.com" class="p-3 bg-amber-500 text-[#3b2300] hover:opacity-90 font-bold rounded-xl transition-opacity flex items-center text-sm px-4">
+                    Email Me
+                </a>
+            </div>
+        </section>
 
     </main>
-
-    <script>
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-
-            document.querySelectorAll('.tab-link').forEach(btn => {
-                btn.classList.remove('bg-amber-600', 'text-black');
-                btn.classList.add('text-slate-400');
-            });
-            const activeBtn = document.getElementById('tab-' + tabId);
-            activeBtn.classList.add('bg-amber-600', 'text-black');
-            activeBtn.classList.remove('text-slate-400');
-        }
-    </script>
 </body>
 </html>
