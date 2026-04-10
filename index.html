@@ -3,173 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ItsSkellyHer3 | Vibe Coder</title>
+    <title>ItsSkellyHer3 | Portfolio 24-26</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --fall-bg: #16100e;
-            --fall-card: #221815;
-            --amber-main: #f59e0b;
+            --bg: #0f0a09;
+            --card: #1a1210;
+            --amber-glow: #f59e0b;
         }
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: var(--fall-bg);
+            background-color: var(--bg);
             color: #f1f1f1;
-            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        .m3-card {
-            background-color: var(--fall-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
-        }
-        .m3-card:hover {
-            border-color: rgba(245, 158, 11, 0.3);
-            background-color: #2a1d1a;
-            transform: scale(1.01);
-        }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; animation: contentFade 0.3s ease-out; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
         
-        @keyframes contentFade {
-            from { opacity: 0; transform: translateY(10px); }
+        /* Denser M3 Card */
+        .dense-card {
+            background-color: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .dense-card:hover {
+            border-color: rgba(245, 158, 11, 0.3);
+            background-color: #211714;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+        }
+
+        /* Typewriter Cursor */
+        .typewriter::after {
+            content: '|';
+            animation: blink 1s infinite;
+            color: var(--amber-glow);
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: slideIn 0.4s ease-out; }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Hide scrollbars but allow scrolling */
+        .status-dot {
+            animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="selection:bg-amber-500/30">
 
-    <!-- Nav -->
-    <nav class="fixed top-0 w-full z-50 bg-[#16100e]/80 backdrop-blur-xl border-b border-white/5">
-        <div class="max-w-5xl mx-auto px-6 h-16 flex justify-between items-center">
-            <div class="font-extrabold text-lg tracking-tight flex items-center gap-2">
-                <span class="text-amber-500">🍂</span> ItsSkellyHer3
+    <!-- Header (Denser) -->
+    <nav class="fixed top-0 w-full z-50 bg-[#0f0a09]/90 backdrop-blur-2xl border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="font-extrabold text-xl tracking-tighter flex items-center gap-2">
+                    <span class="text-amber-500">🍂</span> ItsSkellyHer3
+                </div>
+                <div class="hidden sm:flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/5">
+                    <div class="w-2 h-2 rounded-full bg-green-500 status-dot"></div>
+                    <span class="mono text-[10px] font-bold text-slate-400">TUNNEL: NGROK_ACTIVE</span>
+                </div>
             </div>
-            <div class="flex gap-4">
-                <a href="https://github.com/ItsSkellyHer3" target="_blank" class="p-2 text-slate-400 hover:text-amber-500 transition-colors">
+            <div class="flex items-center gap-6">
+                <a href="mailto:adhyasthareihan@gmail.com" class="hidden md:block mono text-xs text-slate-400 hover:text-amber-500 transition-colors">adhyasthareihan@gmail.com</a>
+                <a href="https://github.com/ItsSkellyHer3" target="_blank" class="p-2 hover:bg-white/5 rounded-xl transition-all">
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                 </a>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto px-6 pt-36 pb-32">
+    <main class="max-w-6xl mx-auto px-6 pt-36 pb-32">
         
-        <!-- Vibrant Intro -->
-        <section class="mb-20">
-            <div class="flex items-center gap-3 mb-6">
-                <span class="px-3 py-1 rounded-full bg-amber-500/10 text-amber-500 text-[10px] font-black uppercase tracking-wider border border-amber-500/20">
-                    Vibe Coder
-                </span>
-                <span class="text-slate-600 text-xs font-bold uppercase tracking-widest">Est. 2023</span>
+        <!-- Hero Section (Denser) -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-24">
+            <div class="lg:col-span-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="px-3 py-1 rounded-lg bg-amber-500/10 text-amber-500 text-[10px] font-black uppercase tracking-widest border border-amber-500/20">
+                        2024 - 2026 CYCLE
+                    </span>
+                    <span class="mono text-xs text-slate-500">v2.4.0_beta</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-[1.1] tracking-tighter">
+                    Building <span id="typewriter" class="text-amber-500 typewriter">vibrant</span><br>digital stuff.
+                </h1>
+                
+                <p class="text-xl text-slate-400 max-w-2xl leading-relaxed mb-10">
+                    I'm <span class="text-white font-bold underline decoration-amber-500/30 underline-offset-8">ItsSkellyHer3</span>. 8 months in and I've already shifted from learning to shipping. I build privacy-first apps, mess with SQL schemas, and keep my vibes consistent.
+                </p>
+
+                <!-- Denser Intro Socials -->
+                <div class="flex flex-wrap items-center gap-4">
+                    <a href="https://github.com/ItsSkellyHer3" target="_blank" class="px-8 py-4 rounded-2xl bg-white text-black font-black text-sm hover:bg-amber-500 hover:text-white transition-all transform active:scale-95 shadow-xl shadow-white/5">
+                        VIEW SOURCE
+                    </a>
+                    <div class="flex items-center gap-2 p-1 bg-white/5 rounded-2xl border border-white/10">
+                        <a href="https://tiktok.com/@ItsSkellyHer3" target="_blank" class="p-3 hover:bg-white/10 rounded-xl transition-all" title="TikTok">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.32c7.87 33.32 31.27 60.33 62.11 70.96a121.03 121.03 0 0 0 58.8 0z"/></svg>
+                        </a>
+                        <a href="https://instagram.com/WhiskerMiller" target="_blank" class="p-3 hover:bg-white/10 rounded-xl transition-all" title="Instagram">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                    </div>
+                </div>
             </div>
-            
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-[1.05] tracking-tight">
-                Building <span class="text-amber-500">vibrant</span> <br>digital stuff.
-            </h1>
-            
-            <p class="text-xl text-slate-300 max-w-2xl leading-relaxed mb-10">
-                I'm <span class="text-white font-bold underline decoration-amber-500/40 decoration-4 underline-offset-4">ItsSkellyHer3</span>. I've been coding for about 8 months now—learning fast, breaking things, and focusing on privacy-first apps. I don't just write code; I build vibes.
-            </p>
-            
-            <!-- Quick Links -->
-            <div class="flex flex-wrap gap-3">
-                <a href="https://github.com/ItsSkellyHer3" target="_blank" class="group flex items-center gap-2 px-6 py-3 rounded-2xl bg-white text-black font-bold text-sm hover:bg-amber-500 hover:text-white transition-all">
-                    GitHub
-                </a>
-                <a href="https://tiktok.com/@ItsSkellyHer3" target="_blank" class="flex items-center gap-2 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 font-bold text-sm hover:bg-white/10 transition-all">
-                    TikTok
-                </a>
-                <a href="https://instagram.com/WhiskerMiller" target="_blank" class="flex items-center gap-2 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 font-bold text-sm hover:bg-white/10 transition-all">
-                    Instagram
-                </a>
+
+            <!-- Stats Bar (New Denser Element) -->
+            <div class="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-4">
+                <div class="dense-card p-6 rounded-3xl border-l-4 border-l-amber-500">
+                    <div class="text-[10px] font-black text-slate-500 uppercase mb-2">Total Exp</div>
+                    <div class="text-3xl font-black">0.8<span class="text-lg text-slate-500 tracking-normal ml-1">years</span></div>
+                </div>
+                <div class="dense-card p-6 rounded-3xl">
+                    <div class="text-[10px] font-black text-slate-500 uppercase mb-2">Main Tech</div>
+                    <div class="text-2xl font-black text-amber-500">Mongo/SQL</div>
+                </div>
             </div>
         </section>
 
-        <!-- Tab Nav -->
-        <div class="flex gap-8 border-b border-white/5 mb-10 overflow-x-auto no-scrollbar">
-            <button onclick="switchTab('projects')" id="tab-projects" class="tab-link active py-4 text-sm font-bold border-b-2 border-amber-500 text-amber-500 transition-all">My Work</button>
-            <button onclick="switchTab('about')" id="tab-about" class="tab-link py-4 text-sm font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-300 transition-all">The Stack</button>
+        <!-- Dynamic Tabs -->
+        <div class="flex gap-10 border-b border-white/5 mb-12 overflow-x-auto no-scrollbar">
+            <button onclick="switchTab('work')" id="tab-work" class="tab-link active py-4 text-sm font-bold border-b-2 border-amber-500 text-amber-500 transition-all">Projects & Works</button>
+            <button onclick="switchTab('stack')" id="tab-stack" class="tab-link py-4 text-sm font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-300 transition-all">Deep Stack</button>
+            <button onclick="switchTab('contact')" id="tab-contact" class="tab-link py-4 text-sm font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-300 transition-all">Reach Out</button>
         </div>
 
-        <!-- Projects -->
-        <div id="projects" class="tab-content active">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                
+        <!-- Tab: Work -->
+        <div id="work" class="tab-content active">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- ChatIfy -->
-                <div class="m3-card p-8 rounded-[2.5rem]">
-                    <div class="flex justify-between items-start mb-6">
+                <div class="dense-card p-8 rounded-[2.5rem]">
+                    <div class="flex justify-between items-center mb-6">
                         <div class="w-12 h-12 bg-amber-500/10 rounded-2xl flex items-center justify-center text-amber-500">
                             <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                         </div>
-                        <span class="text-[10px] font-black px-2.5 py-1 bg-emerald-500/10 text-emerald-500 rounded-full tracking-tighter">LIVE / OSS</span>
+                        <div class="flex flex-col items-end">
+                            <span class="text-[10px] font-black px-3 py-1 bg-emerald-500/10 text-emerald-500 rounded-full mb-1">STABLE / OSS</span>
+                            <span class="mono text-[9px] text-slate-500">NGROK_TUNNEL_ENABLED</span>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-black mb-2">ChatIfy</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Privacy-first, open-source chat app. High speed, zero trackers, pure vibes. My main focus right now.</p>
-                    <div class="flex gap-2">
-                        <span class="text-[10px] px-2 py-1 bg-white/5 rounded-lg text-slate-500 font-bold">TYPESCRIPT</span>
-                        <span class="text-[10px] px-2 py-1 bg-white/5 rounded-lg text-slate-500 font-bold">FIREBASE</span>
+                    <h3 class="text-2xl font-black mb-3">ChatIfy</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Privacy-first, open-source chat application. Decentralized logic, encrypted storage, zero logs. My flagship 2024 project.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] px-3 py-1.5 bg-white/5 rounded-lg text-amber-500 font-black">MONGODB</span>
+                        <span class="text-[10px] px-3 py-1.5 bg-white/5 rounded-lg text-amber-500 font-black">WEBSOCKETS</span>
                     </div>
                 </div>
 
                 <!-- EduClass -->
-                <div class="m3-card p-8 rounded-[2.5rem] opacity-75 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="w-12 h-12 bg-slate-500/10 rounded-2xl flex items-center justify-center text-slate-500">
-                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                <div class="dense-card p-8 rounded-[2.5rem] opacity-60 hover:opacity-100">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-slate-500">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"></path><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
                         </div>
-                        <span class="text-[10px] font-black px-2.5 py-1 bg-slate-500/10 text-slate-500 rounded-full tracking-tighter">LEGACY</span>
+                        <span class="text-[10px] font-black px-3 py-1 bg-white/5 text-slate-500 rounded-full">DISCONTINUED</span>
                     </div>
-                    <h3 class="text-2xl font-black mb-2">EduClass</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6">A class management tool for teachers. Discontinued project where I learned the basics of data structures.</p>
-                    <div class="flex gap-2">
-                        <span class="text-[10px] px-2 py-1 bg-white/5 rounded-lg text-slate-500 font-bold">NODE.JS</span>
+                    <h3 class="text-2xl font-black mb-3 text-slate-300">EduClass</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Class management system with automated grading and attendance. The project that started my dev journey.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] px-3 py-1.5 bg-white/5 rounded-lg text-slate-600 font-black">LEGACY_JS</span>
+                        <span class="text-[10px] px-3 py-1.5 bg-white/5 rounded-lg text-slate-600 font-black">SQL_LITE</span>
                     </div>
                 </div>
-
             </div>
         </div>
 
-        <!-- About/Stack -->
-        <div id="about" class="tab-content">
-            <div class="m3-card p-10 rounded-[2.5rem]">
-                <h3 class="text-3xl font-black mb-6">How I roll</h3>
-                <p class="text-slate-400 text-lg leading-relaxed mb-10 max-w-2xl">
-                    I don't believe in over-engineering. I believe in shipping fast, getting feedback, and making things look clean. 8 months in and I'm already comfortable with:
-                </p>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                    <div class="p-4 bg-white/5 rounded-2xl border border-white/5 text-center font-bold text-amber-500">React</div>
-                    <div class="p-4 bg-white/5 rounded-2xl border border-white/5 text-center font-bold text-amber-500">Tailwind</div>
-                    <div class="p-4 bg-white/5 rounded-2xl border border-white/5 text-center font-bold text-amber-500">Next.js</div>
-                    <div class="p-4 bg-white/5 rounded-2xl border border-white/5 text-center font-bold text-amber-500">Supabase</div>
+        <!-- Tab: Stack -->
+        <div id="stack" class="tab-content">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="dense-card p-8 rounded-[2rem]">
+                    <h4 class="text-amber-500 font-black text-xs uppercase tracking-widest mb-6">Database Design</h4>
+                    <ul class="space-y-4 mono text-sm text-slate-400">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> MongoDB (NoSQL)</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> SQL (Relational)</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Redis Caching</li>
+                    </ul>
+                </div>
+                <div class="dense-card p-8 rounded-[2rem]">
+                    <h4 class="text-amber-500 font-black text-xs uppercase tracking-widest mb-6">Backend Flow</h4>
+                    <ul class="space-y-4 mono text-sm text-slate-400">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Node.js / Express</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Bun Runtime</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> REST / WebSockets</li>
+                    </ul>
+                </div>
+                <div class="dense-card p-8 rounded-[2rem]">
+                    <h4 class="text-amber-500 font-black text-xs uppercase tracking-widest mb-6">Ops & Deployment</h4>
+                    <ul class="space-y-4 mono text-sm text-slate-400">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Ngrok Tunneling</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Local Hosting</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Git Workflow</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Contact -->
+        <div id="contact" class="tab-content">
+            <div class="dense-card p-10 md:p-16 rounded-[3rem] text-center max-w-3xl mx-auto">
+                <h3 class="text-4xl font-black mb-6">Let's build vibes.</h3>
+                <p class="text-slate-400 mb-10 text-lg">Always down to talk about open-source, privacy, or SQL schemas.</p>
+                <div class="inline-block p-1 bg-white/5 border border-white/10 rounded-2xl mb-8">
+                    <a href="mailto:adhyasthareihan@gmail.com" class="px-8 py-4 block bg-white text-black font-black rounded-xl hover:bg-amber-500 hover:text-white transition-all">
+                        adhyasthareihan@gmail.com
+                    </a>
+                </div>
+                <div class="flex justify-center gap-6">
+                    <a href="https://tiktok.com/@ItsSkellyHer3" class="text-slate-500 hover:text-white transition-colors font-bold uppercase text-[10px] tracking-widest">TikTok</a>
+                    <a href="https://instagram.com/WhiskerMiller" class="text-slate-500 hover:text-white transition-colors font-bold uppercase text-[10px] tracking-widest">Instagram</a>
+                    <a href="https://github.com/ItsSkellyHer3" class="text-slate-500 hover:text-white transition-colors font-bold uppercase text-[10px] tracking-widest">GitHub</a>
                 </div>
             </div>
         </div>
 
     </main>
 
-    <!-- Social Bar -->
-    <div class="fixed bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-[#221815] border border-white/10 p-2 rounded-full shadow-2xl z-50">
-        <a href="https://github.com/ItsSkellyHer3" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-amber-600 transition-all group" title="GitHub">
-            <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-        </a>
-        <a href="https://tiktok.com/@ItsSkellyHer3" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-amber-600 transition-all group" title="TikTok">
-            <svg width="22" height="22" fill="currentColor" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.32c7.87 33.32 31.27 60.33 62.11 70.96a121.03 121.03 0 0 0 58.8 0z"/></svg>
-        </a>
-        <a href="https://instagram.com/WhiskerMiller" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-amber-600 transition-all group" title="Instagram">
-            <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
-    </div>
+    <!-- Footer Stats -->
+    <footer class="border-t border-white/5 py-12 bg-[#0f0a09]">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="mono text-[10px] text-slate-600 font-bold uppercase tracking-widest">
+                © 2024 - 2026 // ItsSkellyHer3 // Build_0012
+            </div>
+            <div class="flex items-center gap-4 text-xs font-bold text-slate-500">
+                <span class="text-amber-500">STAY VIBRANT</span>
+                <span class="w-1 h-1 bg-slate-800 rounded-full"></span>
+                <span>KEEP CODING</span>
+            </div>
+        </div>
+    </footer>
 
     <script>
+        // Typewriter Logic
+        const words = ["vibrant", "private", "reliable", "scalable", "open source"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const target = document.getElementById('typewriter');
+
+        function type() {
+            const currentWord = words[wordIndex];
+            const shouldDelete = isDeleting ? currentWord.substring(0, charIndex - 1) : currentWord.substring(0, charIndex + 1);
+            
+            target.textContent = shouldDelete;
+            charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
+
+            let typeSpeed = isDeleting ? 50 : 150;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Tab Switcher
         function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
 
             document.querySelectorAll('.tab-link').forEach(btn => {
@@ -180,6 +289,10 @@
             activeBtn.classList.add('border-amber-500', 'text-amber-500');
             activeBtn.classList.remove('border-transparent', 'text-slate-500');
         }
+
+        window.onload = () => {
+            type();
+        };
     </script>
 </body>
 </html>
