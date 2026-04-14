@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0c0a09">
     <title>ItsSkellyHer3 | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             /* Premium Fall Theme */
@@ -28,20 +29,31 @@
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
         }
-        
+
         /* Hide Scrollbar for cleaner look */
         ::-webkit-scrollbar { display: none; }
         * { scrollbar-width: none; }
+
+        /* Smooth Entrance Animation */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
 
         /* Mobile-First Bento Cards */
         .card {
             background-color: var(--surface);
             border: 1px solid var(--border);
             border-radius: 20px; 
-            padding: 1rem;    
+            padding: 1.25rem;    
             display: flex;
             flex-direction: column;
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         @media (min-width: 768px) {
             .card {
@@ -52,14 +64,17 @@
         .card:hover { 
             background-color: var(--surface-hover); 
             border-color: #57534e;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
         }
-        
+
         .card-primary {
             background-color: var(--accent-muted);
             border: 1px solid transparent;
         }
         .card-primary:hover {
             border: 1px solid var(--accent);
+            box-shadow: 0 10px 40px -10px rgba(234, 88, 12, 0.2);
         }
 
         /* Clean Pills */
@@ -68,14 +83,11 @@
             border: 1px solid var(--border);
             color: #d6d3d1;
             border-radius: 9999px;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             font-weight: 700;
-            padding: 4px 10px;
+            padding: 6px 12px;
             letter-spacing: 0.03em;
             white-space: nowrap;
-        }
-        @media (min-width: 768px) {
-            .chip { font-size: 0.7rem; padding: 6px 12px; }
         }
         .chip-primary {
             background-color: rgba(234, 88, 12, 0.15);
@@ -88,29 +100,30 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 700;
             color: #a8a29e;
             background: #0c0a09;
             border: 1px solid var(--border);
-            padding: 6px 12px;
+            padding: 8px 14px;
             border-radius: 12px;
             margin-top: auto;
             width: fit-content;
             transition: all 0.2s;
             cursor: pointer;
         }
-        .action-btn:hover { color: #fff; background: #292524; }
+        .action-btn:hover { color: #fff; background: #292524; transform: scale(1.05); }
+        .action-btn:active { transform: scale(0.95); }
         .action-btn-primary { color: #fdba74; border-color: rgba(234,88,12,0.3); background: rgba(234,88,12,0.1); }
         .action-btn-primary:hover { color: #fff; background: rgba(234,88,12,0.2); border-color: var(--accent); }
 
         /* Modal Overlay & Animations */
         #modal-overlay { transition: opacity 0.3s ease; }
-        #modal-content { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
-        
+        #modal-content { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s; }
+
         /* Mobile: Bottom Sheet | Desktop: Centered Box */
         .modal-hidden { opacity: 0; pointer-events: none; }
-        .sheet-hidden { transform: translateY(100%); }
+        .sheet-hidden { transform: translateY(100%); opacity: 0; }
         @media (min-width: 768px) {
             .sheet-hidden { transform: translateY(20px) scale(0.95); opacity: 0; }
         }
@@ -121,127 +134,152 @@
     <!-- 2-Col Mobile Grid | 12-Col Desktop Grid -->
     <main class="max-w-[1150px] w-full grid grid-cols-2 md:grid-cols-12 gap-3 md:gap-5">
 
-        <!-- ROW 1: Profile (Spans full width) -->
-        <section class="card col-span-2 md:col-span-8 justify-center">
-            <div class="flex flex-row gap-4 md:gap-6 items-center md:items-start text-left">
-                <div class="relative shrink-0">
-                    <img src="https://github.com/ItsSkellyHer3.png" alt="Profile" class="w-16 h-16 md:w-28 md:h-28 rounded-full border-2 md:border-[3px] border-[#ea580c] object-cover shadow-lg shadow-orange-900/20">
+        <!-- ROW 1: Profile -->
+        <section class="card col-span-2 md:col-span-8 justify-center animate-fade-in" style="animation-delay: 0.1s;">
+            <div class="flex flex-col sm:flex-row gap-4 md:gap-6 items-center sm:items-start text-center sm:text-left">
+                <div class="relative shrink-0 group">
+                    <img src="https://github.com/ItsSkellyHer3.png" alt="Profile" class="w-20 h-20 md:w-28 md:h-28 rounded-full border-2 md:border-[3px] border-[#ea580c] object-cover shadow-lg shadow-orange-900/20 group-hover:rotate-6 transition-transform duration-300">
                 </div>
                 <div>
-                    <div class="flex items-center gap-2 mb-1">
-                        <h1 class="text-xl md:text-3xl font-extrabold tracking-tight">ItsSkellyHer3</h1>
-                        <span class="text-lg md:text-2xl">🍁</span>
+                    <div class="flex items-center justify-center sm:justify-start gap-2 mb-1">
+                        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">ItsSkellyHer3</h1>
+                        <span class="text-xl md:text-2xl animate-bounce">🍁</span>
                     </div>
-                    <p class="text-[10px] md:text-[13px] text-[#ea580c] font-bold mb-2 md:mb-3 uppercase tracking-wider">Vibe Coder • Builder</p>
-                    <p class="text-[12px] md:text-[15px] text-[#a8a29e] max-w-lg leading-relaxed font-medium">
+                    <p class="text-[11px] md:text-[13px] text-[#ea580c] font-bold mb-2 md:mb-3 uppercase tracking-wider">Vibe Coder • Builder</p>
+                    <p class="text-[13px] md:text-[15px] text-[#a8a29e] max-w-lg leading-relaxed font-medium">
                         I build simple software that keeps your privacy safe. I do not use complicated setups. I learn by building, breaking, and hosting myself.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Socials (2x2 Grid on mobile, side by side on desktop) -->
-        <section class="card col-span-2 md:col-span-4 justify-center">
-            <h2 class="text-[10px] md:text-xs font-bold text-[#a8a29e] uppercase tracking-widest mb-3 md:mb-4">Connect</h2>
-            <div class="grid grid-cols-2 gap-2 md:gap-2.5">
-                <a href="https://github.com/ItsSkellyHer3" target="_blank" class="flex items-center justify-center md:justify-start gap-2 p-2.5 md:p-3 bg-[#0c0a09] border border-[#44403c] hover:bg-[#292524] rounded-xl transition-all text-xs md:text-sm font-semibold">
-                    <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        <!-- Socials -->
+        <section class="card col-span-2 md:col-span-4 justify-center animate-fade-in" style="animation-delay: 0.2s;">
+            <h2 class="text-[11px] md:text-xs font-bold text-[#a8a29e] uppercase tracking-widest mb-3 md:mb-4">Connect</h2>
+            <div class="grid grid-cols-2 gap-2.5 md:gap-3">
+                <a href="https://github.com/ItsSkellyHer3" target="_blank" class="flex items-center justify-center md:justify-start gap-2 p-3 bg-[#0c0a09] border border-[#44403c] hover:bg-[#292524] rounded-xl transition-all text-xs md:text-sm font-semibold hover:scale-[1.02]">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                     GitHub
                 </a>
-                <a href="mailto:adhyasthareihan@gmail.com" class="flex items-center justify-center md:justify-start gap-2 p-2.5 md:p-3 bg-[#ea580c] text-white hover:bg-[#c2410c] rounded-xl transition-all text-xs md:text-sm font-bold shadow-md shadow-orange-900/20">
-                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                <a href="mailto:adhyasthareihan@gmail.com" class="flex items-center justify-center md:justify-start gap-2 p-3 bg-[#ea580c] text-white hover:bg-[#c2410c] rounded-xl transition-all text-xs md:text-sm font-bold shadow-md shadow-orange-900/20 hover:scale-[1.02]">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     Email
                 </a>
-                <a href="https://tiktok.com/@ItsSkellyHer3" target="_blank" class="flex items-center justify-center md:justify-start gap-2 p-2.5 md:p-3 bg-[#0c0a09] border border-[#44403c] hover:bg-[#292524] rounded-xl transition-all text-xs md:text-sm font-semibold">
-                    <svg width="12" height="12" fill="currentColor" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.32c7.87 33.32 31.27 60.33 62.11 70.96a121.03 121.03 0 0 0 58.8 0z"/></svg>
+                <a href="https://tiktok.com/@ItsSkellyHer3" target="_blank" class="flex items-center justify-center md:justify-start gap-2 p-3 bg-[#0c0a09] border border-[#44403c] hover:bg-[#292524] rounded-xl transition-all text-xs md:text-sm font-semibold hover:scale-[1.02]">
+                    <svg width="14" height="14" fill="currentColor" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.32c7.87 33.32 31.27 60.33 62.11 70.96a121.03 121.03 0 0 0 58.8 0z"/></svg>
                     TikTok
                 </a>
-                <a href="https://instagram.com/WhiskerMiller" target="_blank" class="flex items-center justify-center md:justify-start gap-2 p-2.5 md:p-3 bg-[#0c0a09] border border-[#44403c] hover:bg-[#292524] rounded-xl transition-all text-xs md:text-sm font-semibold">
-                    <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/></svg>
+                <a href="https://instagram.com/WhiskerMiller" target="_blank" class="flex items-center justify-center md:justify-start gap-2 p-3 bg-[#0c0a09] border border-[#44403c] hover:bg-[#292524] rounded-xl transition-all text-xs md:text-sm font-semibold hover:scale-[1.02]">
+                    <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/></svg>
                     Insta
                 </a>
             </div>
         </section>
 
         <!-- ROW 2: ChatIfy & Tools -->
-        <section class="card card-primary col-span-2 md:col-span-7">
+        <section class="card card-primary col-span-2 md:col-span-7 animate-fade-in" style="animation-delay: 0.3s;">
             <div class="flex justify-between items-start mb-2 md:mb-3">
                 <h3 class="text-xl md:text-2xl font-extrabold text-[#fdba74]">ChatIfy</h3>
-                <span class="text-[9px] md:text-[10px] font-bold bg-[#ea580c] text-white px-2.5 py-1 rounded-full uppercase tracking-wider">Main Project</span>
+                <span class="text-[10px] md:text-[11px] font-bold bg-[#ea580c] text-white px-3 py-1 rounded-full uppercase tracking-wider">Main Project</span>
             </div>
-            <p class="text-[13px] md:text-[15px] text-[#fed7aa] leading-snug font-medium mb-4">A private, open-source chat app. Built to keep your messages safe and hidden.</p>
-            
+            <p class="text-[13px] md:text-[15px] text-[#fed7aa] leading-snug font-medium mb-6">A private, open-source chat app. Built to keep your messages safe and hidden.</p>
+
             <button class="action-btn action-btn-primary" onclick="openModal('Why I built this', 'Privacy matters. I built this so people can chat without worrying about their data being collected. I used <b>TypeScript</b> to keep the code organized and <b>SQL</b> to structure and save the messages safely.')">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Read More
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Read More
             </button>
         </section>
 
-        <section class="card col-span-2 md:col-span-5">
-            <h2 class="text-[10px] md:text-xs font-bold text-[#a8a29e] uppercase tracking-widest mb-3">Tools I Use</h2>
-            <div class="flex flex-wrap gap-2 mb-4">
+        <section class="card col-span-2 md:col-span-5 animate-fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-[11px] md:text-xs font-bold text-[#a8a29e] uppercase tracking-widest mb-3">Tools I Use</h2>
+            <div class="flex flex-wrap gap-2 mb-6">
                 <span class="chip chip-primary">React</span>
                 <span class="chip chip-primary">Tailwind CSS</span>
                 <span class="chip">Node.js</span>
                 <span class="chip">TypeScript</span>
             </div>
-            
+
             <button class="action-btn" onclick="openModal('How I use them', 'I use React and Tailwind to quickly build clean websites that work on computers and phones. I write everything in TypeScript so I make fewer mistakes before the code even runs.')">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> How I use them
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> How I use them
             </button>
         </section>
 
-        <!-- ROW 3: Side-by-Side on Mobile! (Hosting & Data) -->
-        <section class="card col-span-1 md:col-span-4">
-            <h2 class="text-[10px] md:text-xs font-bold text-[#a8a29e] uppercase tracking-widest mb-3">Hosting</h2>
-            <div class="flex items-center gap-2 bg-[#0c0a09] border border-[#44403c] px-2.5 py-2 rounded-xl mb-3">
-                <div class="w-2 h-2 rounded-full bg-[#ea580c]"></div> 
-                <span class="text-[11px] md:text-[13px] font-bold text-white">Ngrok</span>
+        <!-- ROW 3: Hosting, Data & Status Card -->
+        <section class="card col-span-1 md:col-span-4 animate-fade-in" style="animation-delay: 0.5s;">
+            <h2 class="text-[11px] md:text-xs font-bold text-[#a8a29e] uppercase tracking-widest mb-3">Hosting</h2>
+            <div class="flex items-center gap-2 bg-[#0c0a09] border border-[#44403c] px-3 py-2.5 rounded-xl mb-4">
+                <div class="w-2.5 h-2.5 rounded-full bg-[#ea580c] shadow-[0_0_8px_rgba(234,88,12,0.8)] animate-pulse"></div> 
+                <span class="text-[12px] md:text-[14px] font-bold text-white">Ngrok</span>
             </div>
-            
+
             <button class="action-btn" onclick="openModal('How it works', 'Instead of paying for web servers, I run my code directly from my own Linux machine. Ngrok creates a secure path straight to my computer. It is free and very simple.')">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Info
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Info
             </button>
         </section>
 
-        <section class="card col-span-1 md:col-span-4">
-            <h2 class="text-[10px] md:text-xs font-bold text-[#a8a29e] uppercase tracking-widest mb-3">Database</h2>
-            <div class="flex flex-wrap gap-1.5 mb-3">
+        <section class="card col-span-1 md:col-span-4 animate-fade-in" style="animation-delay: 0.6s;">
+            <h2 class="text-[11px] md:text-xs font-bold text-[#a8a29e] uppercase tracking-widest mb-3">Database</h2>
+            <div class="flex flex-wrap gap-2 mb-4">
                 <span class="chip">SQL</span>
                 <span class="chip">Mongo</span>
                 <span class="chip">Linux</span>
             </div>
-            
+
             <button class="action-btn" onclick="openModal('Why these?', 'I use Linux to run everything smoothly and Git to save my code updates. I choose between SQL or MongoDB depending on the type of data the project needs.')">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Info
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Info
             </button>
         </section>
 
-        <!-- EduClass (Spans full width again) -->
-        <section class="card col-span-2 md:col-span-4 opacity-85 hover:opacity-100">
+        <!-- NORMAL STATUS CARD (CLEAN PURPLE THEME) -->
+        <section class="card col-span-2 md:col-span-4 relative overflow-hidden group animate-fade-in" style="animation-delay: 0.7s;">
+            <!-- Subtle Purple Heart Background Element -->
+            <div class="absolute -right-6 -top-6 text-[100px] opacity-[0.03] group-hover:scale-110 group-hover:-rotate-12 transition-all duration-700 ease-out pointer-events-none blur-[1px]">💜</div>
+            
+            <h2 class="text-[11px] md:text-xs font-bold text-[#a8a29e] uppercase tracking-widest mb-3">Status</h2>
+
+            <div class="flex items-center gap-3 mb-5 relative z-10">
+                <div class="bg-[#0c0a09] border border-[#44403c] p-2.5 rounded-xl group-hover:border-[#a855f7] transition-colors relative z-10">
+                    <span class="text-xl md:text-2xl block group-hover:scale-110 transition-transform">💜</span>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <p class="text-[14px] md:text-[16px] font-bold text-white tracking-wide leading-tight group-hover:text-[#d8b4fe] transition-colors">Guess what..</p>
+                </div>
+            </div>
+
+            <!-- Distinct Action Button -->
+            <button class="action-btn relative z-10 group-hover:border-[#a855f7]/50 group-hover:text-[#d8b4fe] transition-colors" onclick="openModal('Fun Fact 💜', 'Just putting it out there: I am proudly Fitriyani\'s boyfriend. That is the only status that matters.')">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Info
+            </button>
+        </section>
+
+        <!-- ROW 4: EduClass -->
+        <section class="card col-span-2 md:col-span-12 opacity-85 hover:opacity-100 animate-fade-in" style="animation-delay: 0.8s;">
             <div class="flex justify-between items-start mb-2">
                 <h3 class="text-lg md:text-xl font-bold text-white">EduClass</h3>
-                <span class="text-[9px] font-bold text-[#a8a29e] bg-[#0c0a09] border border-[#44403c] px-2 py-1 rounded-md uppercase tracking-wider">Stopped</span>
+                <span class="text-[10px] font-bold text-[#a8a29e] bg-[#0c0a09] border border-[#44403c] px-3 py-1 rounded-md uppercase tracking-wider">Stopped</span>
             </div>
-            <p class="text-[12px] md:text-[14px] text-[#a8a29e] leading-snug mb-3 font-medium">An app made for teachers to manage classes easily.</p>
-            
-            <button class="action-btn" onclick="openModal('What I learned', 'I stopped working on this, but it was great practice. Building it taught me how to link different databases together and manage large amounts of student data.')">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Read More
+            <p class="text-[13px] md:text-[15px] text-[#a8a29e] leading-snug mb-4 font-medium max-w-3xl">An app made for teachers to manage classes easily.</p>
+
+            <button class="action-btn" onclick="openModal('What I learned', 'I stopped working on this, but it was great practice. Building it taught me how to link different databases together and manage large amounts of student data efficiently.')">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Read More
             </button>
         </section>
 
     </main>
 
-    <!-- Global App-Like Modal (Fixes the Grid Stretching completely) -->
-    <div id="modal-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 modal-hidden" onclick="closeModal()"></div>
-    
-    <div id="modal-content" class="fixed bottom-0 left-0 right-0 md:bottom-auto md:top-1/2 md:-translate-y-1/2 md:left-1/2 md:-translate-x-1/2 w-full md:max-w-md bg-[#1c1917] border-t md:border border-[#44403c] p-6 rounded-t-3xl md:rounded-3xl z-50 sheet-hidden shadow-2xl">
+    <!-- Global App-Like Modal -->
+    <div id="modal-overlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 modal-hidden" onclick="closeModal()"></div>
+
+    <div id="modal-content" class="fixed bottom-0 left-0 right-0 md:bottom-auto md:top-1/2 md:-translate-y-1/2 md:left-1/2 md:-translate-x-1/2 w-full md:max-w-md bg-[#1c1917] border-t md:border border-[#44403c] p-6 pb-10 md:pb-6 rounded-t-[32px] md:rounded-[32px] z-50 sheet-hidden shadow-2xl">
+        <!-- Mobile drag indicator -->
+        <div class="w-12 h-1.5 bg-[#44403c] rounded-full mx-auto mb-5 md:hidden"></div>
+        
         <div class="flex justify-between items-center mb-4">
-            <h3 id="modal-title" class="text-lg font-bold text-[#fdba74]">Title</h3>
-            <button onclick="closeModal()" class="p-2 bg-[#0c0a09] rounded-full text-[#a8a29e] hover:text-white transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            <h3 id="modal-title" class="text-xl font-bold text-[#fdba74]">Title</h3>
+            <button onclick="closeModal()" class="p-2.5 bg-[#0c0a09] border border-[#44403c] rounded-full text-[#a8a29e] hover:text-white hover:bg-[#292524] transition-colors focus:outline-none">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
         </div>
-        <p id="modal-text" class="text-[14px] text-[#d6d3d1] leading-relaxed font-medium">Text goes here...</p>
+        <p id="modal-text" class="text-[15px] text-[#d6d3d1] leading-relaxed font-medium">Text goes here...</p>
     </div>
 
     <script>
@@ -255,12 +293,9 @@
             mText.innerHTML = text;
             overlay.classList.remove('modal-hidden');
             modal.classList.remove('sheet-hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling on mobile
         }
 
         function closeModal() {
             overlay.classList.add('modal-hidden');
-            modal.classList.add('sheet-hidden');
-        }
-    </script>
-</body>
-</html>
+         
