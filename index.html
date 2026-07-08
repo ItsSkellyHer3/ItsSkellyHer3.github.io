@@ -63,9 +63,9 @@
         }
         .card:hover { 
             background-color: var(--surface-hover); 
-            border-color: #57534e;
-            transform: translateY(-4px);
-            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+            border-color: rgba(234, 88, 12, 0.4);
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.6);
         }
 
         .card-primary {
@@ -79,6 +79,9 @@
 
         /* Clean Pills */
         .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             background-color: #0c0a09;
             border: 1px solid var(--border);
             color: #d6d3d1;
@@ -93,6 +96,46 @@
             background-color: rgba(234, 88, 12, 0.15);
             border: 1px solid rgba(234, 88, 12, 0.4);
             color: #fdba74;
+        }
+
+        /* Image Preview Style */
+        .project-preview {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(234, 88, 12, 0.2);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card:hover .project-preview {
+            transform: scale(1.03);
+        }
+
+        /* Gallery in Modal */
+        .modal-gallery {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            margin-top: 1rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border) transparent;
+        }
+        .modal-gallery::-webkit-scrollbar {
+            display: block;
+            height: 4px;
+        }
+        .modal-gallery::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 10px;
+        }
+        .modal-gallery img {
+            height: 160px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            flex-shrink: 0;
         }
 
         /* Interactive Action Buttons */
@@ -170,7 +213,7 @@
                     TikTok
                 </a>
                 <a href="https://instagram.com/WhiskerMiller" target="_blank" class="flex items-center justify-center md:justify-start gap-2 p-3 bg-[#0c0a09] border border-[#44403c] hover:bg-[#292524] rounded-xl transition-all text-xs md:text-sm font-semibold hover:scale-[1.02]">
-                    <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/></svg>
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     Insta
                 </a>
             </div>
@@ -182,9 +225,12 @@
                 <h3 class="text-xl md:text-2xl font-extrabold text-[#fdba74]">ChatIfy</h3>
                 <span class="text-[10px] md:text-[11px] font-bold bg-[#ea580c] text-white px-3 py-1 rounded-full uppercase tracking-wider">Main Project</span>
             </div>
+            <div class="overflow-hidden rounded-xl mb-4">
+                <img src="assets/images/chatify-home.png" alt="ChatIfy Preview" class="project-preview">
+            </div>
             <p class="text-[13px] md:text-[15px] text-[#fed7aa] leading-snug font-medium mb-6">A private, open-source chat app. Built to keep your messages safe and hidden.</p>
 
-            <button class="action-btn action-btn-primary" onclick="openModal('Why I built this', 'Privacy matters. I built this so people can chat without worrying about their data being collected. I used <b>TypeScript</b> to keep the code organized and <b>SQL</b> to structure and save the messages safely.')">
+            <button class="action-btn action-btn-primary" onclick="openModal('About ChatIfy', 'Privacy matters. I built this so people can chat without worrying about their data being collected. I used <b>TypeScript</b> to keep the code organized and <b>SQL</b> to structure and save the messages safely.<div class=\'modal-gallery\'><img src=\'assets/images/chatify-home.png\'><img src=\'assets/images/chatify-chat.png\'><img src=\'assets/images/chatify-settings.png\'></div>')">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Read More
             </button>
         </section>
@@ -192,10 +238,22 @@
         <section class="card col-span-2 md:col-span-5 animate-fade-in" style="animation-delay: 0.4s;">
             <h2 class="text-[11px] md:text-xs font-bold text-[#a8a29e] uppercase tracking-widest mb-3">Tools I Use</h2>
             <div class="flex flex-wrap gap-2 mb-6">
-                <span class="chip chip-primary">React</span>
-                <span class="chip chip-primary">Tailwind CSS</span>
-                <span class="chip">Node.js</span>
-                <span class="chip">TypeScript</span>
+                <span class="chip chip-primary">
+                    <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M23.32 10.26c-.97-3.03-3.03-5.22-5.74-6.15-2.72-.93-5.75-.46-8.5 1.34-3.56 2.32-5.91 5.9-6.38 9.77-.47 3.86.94 7.6 3.8 10.15 2.86 2.55 6.64 3.65 10.32 3.03 3.68-.61 6.84-2.82 8.5-6.14.97-1.94 1.32-4.04 1-6.14.9-.65 1.5-1.6 1.5-2.7 0-1.88-1.52-3.41-3.41-3.41-.45 0-.88.09-1.28.26C21.6 6.13 19.34 4.3 16.5 3.7c-2.84-.6-5.83-.04-8.3 1.54-3.1 1.98-5.18 5.1-5.63 8.44-.45 3.34.8 6.57 3.32 8.78 2.52 2.21 5.86 3.16 9.1 2.62s6.04-2.45 7.5-5.32c.86-1.68 1.16-3.5 0.88-5.32.78-.56 1.28-1.4 1.28-2.34 0-1.63-1.32-2.95-2.95-2.95-.39 0-.76.08-1.11.22.42-2.06-.06-4.14-1.31-5.84-1.25-1.7-3.04-2.8-5.06-3.1-2.02-.3-4.04.22-5.7 1.48-2.4 1.83-3.86 4.6-3.9 7.42-.04 2.82 1.3 5.48 3.56 7.15 2.26 1.67 5.16 2.22 7.84 1.5s4.94-2.4 5.94-4.8c.6-1.44.75-2.98.44-4.46.6-.48.96-1.2.96-2 0-1.42-1.15-2.57-2.57-2.57-.34 0-.66.07-.96.19.31-1.78-.04-3.58-0.98-5.12-0.94-1.54-2.38-2.6-4.04-2.98-1.66-.38-3.4-.04-4.88.94-2.14 1.42-3.52 3.68-3.7 6.1s0.8 4.7 2.58 6.2c1.78 1.5 4.14 2.1 6.36 1.66 2.22-.44 4.14-1.8 5.16-3.8.5-1 .7-2.1.5-3.2.5-.4.8-1 .8-1.68 0-1.26-1.02-2.28-2.28-2.28-.3 0-.58.06-.84.17.2-1.54-.1-3.1-.84-4.44-.74-1.34-1.92-2.32-3.3-2.74-1.38-.42-2.86-.18-4.14.64-1.84 1.18-3.12 3.08-3.4 5.2-.28 2.12.44 4.2 2 5.64 1.56 1.44 3.66 2.06 5.68 1.7 2.02-.36 3.76-1.54 4.72-3.3.4-.74.6-1.56.54-2.38.4-.3.7-.8.7-1.34 0-1.12-.9-2.02-2.02-2.02-.27 0-.52.05-.75.15.13-1.3-.15-2.62-.8-3.76-.65-1.14-1.68-1.98-2.88-2.36-1.2-.38-2.5-.2-3.64.48-1.6 0.96-2.76 2.56-3.12 4.38-.36 1.82.16 3.68 1.4 5.06 1.24 1.38 2.98 2.04 4.76 1.82 1.78-.22 3.36-1.22 4.3-2.76.33-.54.52-1.16.54-1.8.35-.2.6-.58.6-1 0-.96-.78-1.74-1.74-1.74z"/></svg>
+                    React
+                </span>
+                <span class="chip chip-primary">
+                    <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C9.664 13.382 8.303 12 5.329 12z"/></svg>
+                    Tailwind CSS
+                </span>
+                <span class="chip">
+                    <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M11.999 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.627 0 11.999 0zm5.184 17.15c-.24.116-.48.204-.732.264a4.11 4.11 0 0 1-1.02.12c-.996 0-1.788-.276-2.376-.828-.588-.552-.888-1.356-.888-2.412s.288-1.86.864-2.412c.576-.552 1.344-.828 2.304-.828.324 0 .648.036.972.108.312.072.588.168.828.288v1.176a3.6 3.6 0 0 0-.756-.372 2.76 2.76 0 0 0-.912-.132c-.588 0-1.044.18-1.368.54s-.48.912-.48 1.656.168 1.284.504 1.62c.336.336.804.504 1.404.504.312 0 .588-.036.828-.108s.456-.168.648-.288v1.104zM10.235 15.61l.168.168v.168h-.828l-.348-.384-.348.384h-.828v-.168l.168-.168-.168-.168v-.168h.828l.348.384.348-.384h.828v.168l-.168.168zm-2.028-.432v.228l.168.168v.168h-.828l-.348-.384-.348.384h-.828v-.168l.168-.168v-.228l-.168-.168v-.168h.828l.348.384.348-.384h.828v.168l-.168.168z"/></svg>
+                    Node.js
+                </span>
+                <span class="chip">
+                    <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0H1.125zm17.363 9.75c.612 0 1.154.037 1.627.111v2.193c-.42-.064-.89-.099-1.409-.099-1.499 0-1.843.705-1.843 1.937v1.13h3.226v2.146h-3.226V24h-2.598v-6.914l-1.962 6.914H11.72l-1.962-6.914V24H7.16V9.75h2.678l2.133 7.828L14.104 9.75h4.384z"/></svg>
+                    TypeScript
+                </span>
             </div>
 
             <button class="action-btn" onclick="openModal('How I use them', 'I use React and Tailwind to quickly build clean websites that work on computers and phones. I write everything in TypeScript so I make fewer mistakes before the code even runs.')">
@@ -230,15 +288,15 @@
         </section>
 
         <!-- NORMAL STATUS CARD (CLEAN PURPLE THEME) -->
-        <section class="card col-span-2 md:col-span-4 relative overflow-hidden group animate-fade-in" style="animation-delay: 0.7s;">
+        <section class="card col-span-2 md:col-span-4 relative overflow-hidden group animate-fade-in bg-gradient-to-br from-[#1c1917] to-purple-900/10" style="animation-delay: 0.7s;">
             <!-- Subtle Purple Heart Background Element -->
-            <div class="absolute -right-6 -top-6 text-[100px] opacity-[0.03] group-hover:scale-110 group-hover:-rotate-12 transition-all duration-700 ease-out pointer-events-none blur-[1px]">💜</div>
+            <div class="absolute -right-6 -top-6 text-[100px] opacity-[0.03] group-hover:scale-110 group-hover:-rotate-12 transition-all duration-700 ease-out pointer-events-none blur-[1px] animate-pulse">💜</div>
             
             <h2 class="text-[11px] md:text-xs font-bold text-[#a8a29e] uppercase tracking-widest mb-3">Status</h2>
 
             <div class="flex items-center gap-3 mb-5 relative z-10">
                 <div class="bg-[#0c0a09] border border-[#44403c] p-2.5 rounded-xl group-hover:border-[#a855f7] transition-colors relative z-10">
-                    <span class="text-xl md:text-2xl block group-hover:scale-110 transition-transform">💜</span>
+                    <span class="text-xl md:text-2xl block group-hover:scale-110 transition-transform animate-pulse">💜</span>
                 </div>
                 <div class="flex flex-col justify-center">
                     <p class="text-[14px] md:text-[16px] font-bold text-white tracking-wide leading-tight group-hover:text-[#d8b4fe] transition-colors">Guess what..</p>
@@ -298,4 +356,13 @@
 
         function closeModal() {
             overlay.classList.add('modal-hidden');
-         
+            modal.classList.add('sheet-hidden');
+            document.body.style.overflow = '';
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
